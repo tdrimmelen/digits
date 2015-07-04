@@ -25,8 +25,9 @@ class Digit:
 	SEVEN = [1,0,1,0,0,1,0]
 	EIGHT = [1,1,1,1,1,1,1]
 	NINE = 	[1,1,1,1,0,1,1]
+	NOTH =  [0,0,0,0,0,0,0]
 
-	DIGITMAP = [ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE]
+	DIGITMAP = [ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NOTH]
 
 	def __init__(self, mb, startpin):
         	self.multibus = multibus.Multibus(mb)
@@ -34,10 +35,10 @@ class Digit:
 
 		for bus in mb :
 			bus.set_port_direction(0, 0xFF)
-			bus.set_port_pullups(0, 0xFF)
+			bus.set_port_pullups(0, 0x00)
 
 			bus.set_port_direction(1, 0xFF)
-			bus.set_port_pullups(1, 0xFF)
+			bus.set_port_pullups(1, 0x00)
 
 	# throw ValueError when not found
 	def read(self):
@@ -47,6 +48,7 @@ class Digit:
 			value = self.multibus.read_pin(x)
 			pin.append(value)
 			logging.debug('Pin ' + str(x) + ' value: ' + str(value))
+		
 
-		return self.DIGITMAP.index(pin)
+		return (self.DIGITMAP.index(pin) % 10 )
 
