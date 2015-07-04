@@ -22,7 +22,7 @@ def schotkloktime():
 		logging.debug('schotklokpath() start')
 		time = s.getJSONTime()
 		logging.debug('schotklokpath() end')
-    		return time
+		return time
 	except:
 		logging.exception('Uncaught exception')
 		raise
@@ -51,9 +51,9 @@ def testschotklokinError():
 	data = request.body.readline()
 	if not data:
         	abort(400, 'No data received')
-    	entity = json.loads(data)
-    	if not entity.has_key('inError'):
-        	abort(400, 'No inError specified')
+	entity = json.loads(data)
+	if not entity.has_key('inError'):
+		abort(400, 'No inError specified')
 	error = entity['inError']
 	ts.inError(error)
 
