@@ -19,7 +19,7 @@ class Schotklok:
 	def getJSONTime(self):
 
 		# Try 2 times as it can return ValueError if time is changing
-    		for i in range(1,2):
+		for i in range(1,2):
 			try:
 				ten = self.tendigit.read() *10 
 
