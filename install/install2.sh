@@ -4,6 +4,7 @@ app=digits
 
 
 adduser --disabled-password --gecos "" ${app}
+usermod -a -G i2c www-data
 
 #If not docker than get code from GIT
 if [ -z "$docker" ]; then

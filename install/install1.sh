@@ -11,6 +11,7 @@ apt-get -y install  apache2 \
 	sudo \
 	net-tools \
 	vim \
-	git
+	git \
+	python-smbus
 
 
