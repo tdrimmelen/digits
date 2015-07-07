@@ -1,4 +1,4 @@
-import multibus
+from .multibus import Multibus
 import logging
 
 class Digit:
@@ -30,7 +30,7 @@ class Digit:
 	DIGITMAP = [ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NOTH]
 
 	def __init__(self, mb, startpin):
-        	self.multibus = multibus.Multibus(mb)
+		self.multibus = Multibus(mb)
 		self.startpin = startpin
 
 		for bus in mb :
