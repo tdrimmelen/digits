@@ -2,20 +2,15 @@
 
 app=digits
 
-apt-get -y update
-
-apt-get -y install  apache2 \
-	python-bottle \
-	python-setuptools \
-	libapache2-mod-wsgi \
-	sudo \
-	net-tools \
-	vim \
-	git
-
 
 adduser --disabled-password --gecos "" ${app}
-sudo su - ${app} -c "git clone https://www.github.com/tdrimmelen/${app}"
+
+#If not docker than get code from GIT
+if [ -z "$docker" ]; then
+
+	sudo su - ${app} -c "git clone https://www.github.com/tdrimmelen/${app}"
+
+fi 
 
 ln -s /home/${app}/${app}/conf/${app}.conf /etc/apache2/sites-enabled/${app}.conf
 a2enmod wsgi

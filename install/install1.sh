@@ -1,5 +1,7 @@
 #!/bin/bash
 
+app=digits
+
 apt-get -y update
 
 apt-get -y install  apache2 \
@@ -11,11 +13,4 @@ apt-get -y install  apache2 \
 	vim \
 	git
 
-
-adduser --disabled-password --gecos "" digits
-sudo su - digits -c 'git clone https://www.github.com/tdrimmelen/digits'
-
-ln -s /home/digits/digits/conf/schotklok.conf /etc/apache2/sites-enabled/schotklok.conf
-a2enmod wsgi
-a2dissite 000-default
 

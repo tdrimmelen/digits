@@ -5,6 +5,6 @@ wget https://raw.githubusercontent.com/tdrimmelen/digits/master/install/install2
 
 chmod u+x *sh
 
-install1.sh
-install2.sh
+./install1.sh
+./install2.sh
 
