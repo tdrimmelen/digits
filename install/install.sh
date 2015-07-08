@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$1" != "shotclock" && "$1"  != "timeclock" ] ; then
+if [ "$1" != "shotclock" ] && [ "$1"  != "timeclock" ] ; then
 	
 	echo "Missing or unknown module"
 	echo "usage: $0 [shotclock|timeclock]"
