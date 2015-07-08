@@ -49,6 +49,38 @@
 				});
 			}
 
+			function putRealBoard() {
+				dojo.xhrPut({
+					// The URL of the request
+					url: "../mgmt/stub",
+					handleAs: "text",
+					postData: dojo.toJson({stub:"False"}),
+					// The success callback with result from server
+					load: updateContent,
+					// The error handler
+					error: function() {
+                                                // Do nothing -- keep old content there
+                                        }
+
+				});
+			}
+
+			function putStub() {
+				dojo.xhrPut({
+					// The URL of the request
+					url: "../mgmt/stub",
+					handleAs: "text",
+					postData: dojo.toJson({stub:"True"}),
+					// The success callback with result from server
+					load: updateContent,
+					// The error handler
+					error: function() {
+                                                // Do nothing -- keep old content there
+                                        }
+
+				});
+			}
+
 			function rebootConfirm() 
 			{
 				myDialog.set('onExecute', function(){reboot(); myDialog.hide(); });
@@ -124,6 +156,8 @@
 		<button id="reboot" onClick="rebootConfirm();">Reboot</button>
 		<button id="poweroff" onClick="poweroffConfirm();">Poweroff</button>
 		<button id="update" onClick="updateConfirm();">Update</button>
+		<button id="stub" onClick="putStub();">Use stub</button>
+		<button id="real" onClick="putRealBoard();">Use board</button>
 		<br /><br />
 
 		<pre id="contentNode" style="display:none;"></pre>
