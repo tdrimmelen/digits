@@ -15,7 +15,7 @@ import json
 # ... build or import your bottle application here ...
 # Do NOT use bottle.run() with mod_wsgi
 
-@route('/schotklok/time')
+@route('/time')
 def schotkloktime():
 
 	try:
@@ -27,25 +27,25 @@ def schotkloktime():
 		logging.exception('Uncaught exception')
 		raise
 
-@route('/testschotklok/start', method='PUT')
+@route('/test/start', method='PUT')
 def testschotklokStart():
 
 	ts.start()
 	return "Started"
 
-@route('/testschotklok/stop', method='PUT')
+@route('/test/stop', method='PUT')
 def testschotklokStop():
 
 	ts.stop()
 	return "Stopped"
 
-@route('/testschotklok/reset', method='PUT')
+@route('/test/reset', method='PUT')
 def testschotklokReset():
 
 	ts.reset()
 	return "Stopped"
 
-@route('/testschotklok/inError', method='PUT')
+@route('/test/inError', method='PUT')
 def testschotklokinError():
 
 	data = request.body.readline()
@@ -57,7 +57,7 @@ def testschotklokinError():
 	error = entity['inError']
 	ts.inError(error)
 
-@route('/testschotklok/time')
+@route('/test/time')
 def testschotkloktime():
 
 	return ts.getJSONTime()

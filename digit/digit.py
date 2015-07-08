@@ -29,9 +29,10 @@ class Digit:
 
 	DIGITMAP = [ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NOTH]
 
-	def __init__(self, mb, startpin):
+	def __init__(self, mb, startpin, invert=False):
 		self.multibus = Multibus(mb)
 		self.startpin = startpin
+		self.invert = invert
 
 		for bus in mb :
 			bus.set_port_direction(0, 0xFF)
@@ -46,6 +47,9 @@ class Digit:
 		pin = []
 		for x in range(self.startpin, ( self.startpin + self.SEGMENT_COUNT ) ) :
 			value = self.multibus.read_pin(x)
+			if self.invert :
+				value = 1 - value
+
 			pin.append(value)
 			logging.debug('Pin ' + str(x) + ' value: ' + str(value))
 		

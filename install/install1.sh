@@ -1,7 +1,5 @@
 #!/bin/bash
 
-app=digits
-
 apt-get -y update
 
 apt-get -y install  apache2 \
@@ -12,6 +10,7 @@ apt-get -y install  apache2 \
 	net-tools \
 	vim \
 	git \
+	zip \
 	python-smbus
 
 

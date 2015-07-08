@@ -7,4 +7,5 @@ chmod u+x *sh
 
 ./install1.sh
 ./install2.sh
+./install3.sh
 
