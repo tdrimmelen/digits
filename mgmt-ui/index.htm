@@ -23,14 +23,14 @@
 			function updateContent(newContent)
 			{
 						// Replace newline with <br>
-						content = newContent.replace("\n", "<br />");
+						content = newContent.replace(/(\\n)/g,'<br \>');
 
 						var contentNode = dojo.byId("contentNode");
 						dojo.style(contentNode,"display","");
 						contentNode.innerHTML = "<strong>Text from server:</strong><br /><br />" +
 							content;
 						// Log to console
-						console.info("Loaded from server:  ",newContent);
+						console.info("Loaded from server:  ",content);
 			}
 
 			function getStub() {
