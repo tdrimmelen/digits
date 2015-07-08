@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [ "$1" == "" ] ; then
+if [ "$1" != "shotclock" || "$1"  != "timeclock" ] ; then
 	
-	echo "Missing module"
-	echo "usage: $0 <module name>"
+	echo "Missing or unknown module"
+	echo "usage: $0 [shotclock|timeclock]"
 
 	exit 1
 fi
