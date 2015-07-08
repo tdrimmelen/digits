@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Management</title>
+		<!-- load dojo and provide config via data attribute -->
+		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/document.css" />
+		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/claro.css" />
+		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js">
+				data-dojo-config="isDebug: true,parseOnLoad: true">
+		</script>
+		<script>
+			require(["dijit/ConfirmDialog", "dojo/domReady!"], function(ConfirmDialog)
+			{
+		    		myDialog = new ConfirmDialog({
+        				title: "Confirm",
+        				style: "width: 300px"
+				});
+			});
+		</script>
+		<script>
+
+			function updateContent(newContent)
+			{
+						// Update with content
+						var contentNode = dojo.byId("contentNode");
+						dojo.style(contentNode,"display","");
+						contentNode.innerHTML = "<strong>Text from server:</strong><br /><br />" +
+							newContent;
+						// Log to console
+						console.info("Loaded from server:  ",newContent);
+			}
+
+			function getStub() {
+				// Using dojo.xhrGet, as no information is being sent -- only requesting
+				dojo.xhrGet({
+					// The URL of the request
+					url: "../mgmt/stub",
+					handleAs: "text",
+					// The success callback with result from server
+					load: updateContent,
+					// The error handler
+					error: function() {
+                                                // Do nothing -- keep old content there
+                                        }
+
+				});
+			}
+
+			function rebootConfirm() 
+			{
+				myDialog.set('onExecute', function(){reboot(); myDialog.hide(); });
+				myDialog.set('content', 'Please conform reboot!');
+				myDialog.show();
+			}
+
+			function reboot() 
+			{
+				dojo.xhrPut({
+					// The URL of the request
+					url: "../mgmt/reboot",
+					handleAs: "text",
+					// The success callback with result from server
+					load: updateContent,
+					// The error handler
+					error: function() {
+						// Do nothing -- keep old content there
+					}
+				});
+			}
+
+			function poweroffConfirm() 
+			{
+				myDialog.set('onExecute', function(){poweroff(); myDialog.hide(); });
+				myDialog.set('content', 'Please conform poweroff!');
+				myDialog.show();
+			}
+
+			function poweroff() 
+			{
+				dojo.xhrPut({
+					// The URL of the request
+					url: "../mgmt/poweroff",
+					handleAs: "text",
+					// The success callback with result from server
+					load: updateContent,
+					// The error handler
+					error: function() {
+						// Do nothing -- keep old content there
+					}
+				});
+			}
+
+		</script>
+	</head>
+	<body class="claro">
+		<h1>Management</h1>
+
+		<button id="getStub" onClick="getStub();">Get Stub status</button>
+		<button id="reboot" onClick="rebootConfirm();">Reboot</button>
+		<button id="poweroff" onClick="poweroffConfirm();">Poweroff</button>
+		<br /><br />
+
+		<pre id="contentNode" style="display:none;"></pre>
+
+	</body>
+</html>
+

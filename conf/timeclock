@@ -7,6 +7,8 @@
     WSGIDaemonProcess mgmt user=digits group=digits processes=1 threads=5
     WSGIScriptAlias /mgmt /home/digits/digits/mgmt.wsgi process-group=mgmt
 
+    Alias /mgmt-ui/  /home/digits/digits/mgmt-ui/
+
     <Directory /home/digits/digits>
         Order deny,allow
         Allow from all
