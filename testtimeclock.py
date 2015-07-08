@@ -3,7 +3,7 @@ import json
 import logging
 import math
 
-class Testschotklok:
+class Testtimeclock:
 
 	def __init__(self):
 
@@ -22,9 +22,9 @@ class Testschotklok:
 		else:
 			elaptime = math.floor(self.time)
 
-		elaptime = max(0, 30 - elaptime)
+		elaptime = max(0, 25*60 - elaptime)
 
-		return json.dumps({'status' : 'OK', 'time': elaptime})
+		return json.dumps({'status' : 'OK', 'minute' : int(elaptime / 60) , 'second' : int(elaptime % 60)})
 
 	def start(self):
 

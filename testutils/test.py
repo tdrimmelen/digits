@@ -2,7 +2,7 @@
 import time
 import os
 
-import testschotklok
+import testshotclock
 import logging
 import logging.config
 
@@ -24,7 +24,7 @@ change the addresses if you have changed the jumpers on the IO Pi
 logging.config.fileConfig('logger.cfg') #logfile config
 logging.info('Started')
 
-d = testschotklok.Testschotklok()
+d = testshotclock.Testshotclock()
 while True:
 	# clear the console
 	os.system('clear')

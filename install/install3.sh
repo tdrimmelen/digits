@@ -1,7 +1,7 @@
 #!/bin/bash
 
 app=digits
-module=schotklok
+module=$1
 
 #If not docker than get code from GIT
 if [ -z "$docker" ]; then
@@ -10,9 +10,13 @@ if [ -z "$docker" ]; then
 
 fi 
 
-ln -s /home/digits/digits/conf/${module}.conf /etc/apache2/sites-enabled/${module}.conf
+ln -s /home/${app}/${app}/conf/${module} /etc/apache2/sites-available/${module}
 a2enmod wsgi
 a2dissite 000-default
+a2ensite ${module}
 
 mkdir /var/log/${app}
-chown www-data:www-data /var/log/${app}
+chown ${app}:${app} /var/log/${app}
+
+cp -r /home/${app}/${app}/conf/sudoers.d/ /etc/
+chmod 440 /etc/sudoers.d/*

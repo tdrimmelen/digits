@@ -1,8 +1,8 @@
 #!/bin/bash
 
 app=digits 
-module=schotklok 
+module=shotclock
  
 adduser --disabled-password --gecos "" ${app} 
-usermod -a -G i2c www-data 
+usermod -a -G i2c ${app}
 

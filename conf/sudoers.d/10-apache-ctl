@@ -1,0 +1,2 @@
+digits   ALL=(ALL:ALL) NOPASSWD: /etc/init.d/apache2 *
+

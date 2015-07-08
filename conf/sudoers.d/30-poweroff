@@ -1,0 +1,2 @@
+digits   ALL=(ALL:ALL) NOPASSWD: /sbin/poweroff
+

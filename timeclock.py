@@ -5,7 +5,7 @@ from ABE_IoPi import IoPi
 import json
 import logging
 
-class Schotklok:
+class Timeclock:
 
 	def __init__(self):
 
@@ -13,15 +13,17 @@ class Schotklok:
 		i2c_bus = i2c_helper.get_smbus()
 		multibus = [ IoPi(i2c_bus, 0x20), IoPi(i2c_bus, 0x21)]
 
-		self.tendigit = Digit(multibus, 1)
-		self.digit = Digit(multibus, 8)
+		self.tenminute = Digit(multibus, 1, True)
+		self.minute = Digit(multibus, 8, True)
+		self.tensecond = Digit(multibus, 15, True)
+		self.second = Digit(multibus, 22, True)
 	
 	def getJSONTime(self):
 
 		# Try 2 times as it can return ValueError if time is changing
 		for i in range(1,2):
 			try:
-				ten = self.tendigit.read() *10 
+				tenminute = self.tenminute.read() *10 
 
 			except ValueError as e:
 
@@ -29,12 +31,29 @@ class Schotklok:
 				continue
 		
 			try:
-				time = self.digit.read()
-				return json.dumps({'status' : 'OK', 'time': time + ten})
+				minute = self.minute.read() 
 
 			except ValueError as e:
 
 				sleep(0.01)
 				continue
+		
+			try:
+				tensecond = self.tensecond.read() *10 
+
+			except ValueError as e:
+
+				sleep(0.01)
+				continue
+		
+			try:
+				second = self.second.read()
+				return json.dumps({'status' : 'OK', 'minute': tenminute + minute, 'second' : tensecond + second})
+
+			except ValueError as e:
+
+				sleep(0.01)
+				continue
+
 		return json.dumps({'status' : 'Error', 'ErrorDetail' : str(e), 'ErrorMessage' : 'No valid time read' })
 

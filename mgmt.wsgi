@@ -3,7 +3,6 @@ import sys, os
 
 sys.path.append(os.path.dirname(__file__))
 sys.path.append(os.path.dirname(__file__) + '/IOPi')
-sys.path.append(os.path.dirname(__file__) + '/scripts')
 
 import bottle
 from bottle import route, request, abort
@@ -27,8 +26,20 @@ def createsupportbundle():
 		logging.exception('Uncaught exception')
 		raise
 
-@route('/usestub', method='PUT')
+@route('/stub', method='GET')
+def getstub():
+
+	logging.debug('getstub() start')
+
+        result = mgmt.Command.stub()
+
+	logging.debug('getstub() stop')
+        return result
+
+@route('/stub', method='PUT')
 def usestub():
+
+	logging.debug('putstub() start')
 
         data = request.body.readline()
         if not data:
@@ -37,7 +48,25 @@ def usestub():
         if not entity.has_key('stub'):
                 abort(400, 'No stub specified')
         stub = entity['stub']
-        mgmt.Command.usestub(stub)
+
+        result = mgmt.Command.usestub(stub == 'True')
+
+	logging.debug('putstub() stop')
+        return result
+
+@route('/reboot', method='PUT')
+def reboot():
+
+	logging.info('Rebooting')
+
+	return mgmt.Command.reboot()
+
+@route('/poweroff', method='PUT')
+def poweroff():
+
+	logging.info('Poweroff')
+
+	return mgmt.Command.poweroff()
 
 logging.config.fileConfig(os.path.dirname(__file__) + '/logger.cfg') #logfile config
 logging.info('Started')

@@ -5,8 +5,8 @@ sys.path.append(os.path.dirname(__file__) + '/IOPi')
 
 import bottle
 from bottle import route, request, abort
-import schotklok
-import testschotklok
+import shotclock
+import testshotclock
 import logging
 import logging.config
 import json
@@ -16,37 +16,37 @@ import json
 # Do NOT use bottle.run() with mod_wsgi
 
 @route('/time')
-def schotkloktime():
+def shotclocktime():
 
 	try:
-		logging.debug('schotklokpath() start')
+		logging.debug('shotclockpath() start')
 		time = s.getJSONTime()
-		logging.debug('schotklokpath() end')
+		logging.debug('shotclockpath() end')
 		return time
 	except:
 		logging.exception('Uncaught exception')
 		raise
 
 @route('/test/start', method='PUT')
-def testschotklokStart():
+def testshotclockStart():
 
 	ts.start()
 	return "Started"
 
 @route('/test/stop', method='PUT')
-def testschotklokStop():
+def testshotclockStop():
 
 	ts.stop()
 	return "Stopped"
 
 @route('/test/reset', method='PUT')
-def testschotklokReset():
+def testshotclockReset():
 
 	ts.reset()
 	return "Stopped"
 
 @route('/test/inError', method='PUT')
-def testschotklokinError():
+def testshotclockinError():
 
 	data = request.body.readline()
 	if not data:
@@ -58,13 +58,13 @@ def testschotklokinError():
 	ts.inError(error)
 
 @route('/test/time')
-def testschotkloktime():
+def testshotclocktime():
 
 	return ts.getJSONTime()
 
 
-s = schotklok.Schotklok()
-ts = testschotklok.Testschotklok()
+s = shotclock.Shotclock()
+ts = testshotclock.Testshotclock()
 
 logging.config.fileConfig(os.path.dirname(__file__) + '/logger.cfg') #logfile config
 logging.info('Started')

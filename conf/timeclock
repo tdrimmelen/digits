@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+    ServerName timeclock.local
+
+    WSGIDaemonProcess timeclock user=digits group=digits processes=1 threads=5
+    WSGIScriptAlias /timeclock /home/digits/digits/timeclock.wsgi process-group=timeclock
+
+    WSGIDaemonProcess mgmt user=digits group=digits processes=1 threads=5
+    WSGIScriptAlias /mgmt /home/digits/digits/mgmt.wsgi process-group=mgmt
+
+    <Directory /home/digits/digits>
+        Order deny,allow
+        Allow from all
+	Options FollowSymLinks
+    </Directory>
+</VirtualHost>
+

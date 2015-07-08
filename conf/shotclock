@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+    ServerName shotclock.local
+
+    WSGIDaemonProcess shotclock user=digits group=digits processes=1 threads=5
+    WSGIScriptAlias /shotclock /home/digits/digits/shotclock.wsgi process-group=shotclock
+
+    WSGIDaemonProcess mgmt user=digits group=digits processes=1 threads=5
+    WSGIScriptAlias /mgmt /home/digits/digits/mgmt.wsgi process-group=mgmt
+
+    <Directory /home/digits/digits>
+        Order deny,allow
+        Allow from all
+	Options FollowSymLinks
+    </Directory>
+</VirtualHost>
+
