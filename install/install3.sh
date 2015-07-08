@@ -7,6 +7,8 @@ module=$1
 if [ -z "$docker" ]; then
 
 	sudo su - ${app} -c "git clone https://www.github.com/tdrimmelen/${app}"
+	sudo su - ${app} -c "git config --global user.email \"pi@noone.nowhere\""
+	sudo su - ${app} -c "git config --global user.name \"Pi\""
 
 fi 
 
