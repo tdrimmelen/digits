@@ -46,3 +46,8 @@ class Command:
 
 		out = Command._run(['sudo','poweroff'])
 		return out
+	@staticmethod
+	def update():
+
+		out = Command._run(['sudo',path + 'update.sh'])
+		return out

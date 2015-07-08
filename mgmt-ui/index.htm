@@ -22,11 +22,13 @@
 
 			function updateContent(newContent)
 			{
-						// Update with content
+						// Replace newline with <br>
+						content = newContent.replace("\n", "<br />");
+
 						var contentNode = dojo.byId("contentNode");
 						dojo.style(contentNode,"display","");
 						contentNode.innerHTML = "<strong>Text from server:</strong><br /><br />" +
-							newContent;
+							content;
 						// Log to console
 						console.info("Loaded from server:  ",newContent);
 			}
@@ -91,6 +93,28 @@
 				});
 			}
 
+			function updateConfirm() 
+			{
+				myDialog.set('onExecute', function(){update(); myDialog.hide(); });
+				myDialog.set('content', 'Please conform update!');
+				myDialog.show();
+			}
+
+			function update() 
+			{
+				dojo.xhrPut({
+					// The URL of the request
+					url: "../mgmt/update",
+					handleAs: "text",
+					// The success callback with result from server
+					load: updateContent,
+					// The error handler
+					error: function() {
+						// Do nothing -- keep old content there
+					}
+				});
+			}
+
 		</script>
 	</head>
 	<body class="claro">
@@ -99,6 +123,7 @@
 		<button id="getStub" onClick="getStub();">Get Stub status</button>
 		<button id="reboot" onClick="rebootConfirm();">Reboot</button>
 		<button id="poweroff" onClick="poweroffConfirm();">Poweroff</button>
+		<button id="update" onClick="updateConfirm();">Update</button>
 		<br /><br />
 
 		<pre id="contentNode" style="display:none;"></pre>

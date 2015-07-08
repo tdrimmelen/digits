@@ -68,6 +68,13 @@ def poweroff():
 
 	return mgmt.Command.poweroff()
 
+@route('/update', method='PUT')
+def update():
+
+	logging.info('Update')
+
+	return mgmt.Command.update()
+
 logging.config.fileConfig(os.path.dirname(__file__) + '/logger.cfg') #logfile config
 logging.info('Started')
 application = bottle.default_app()
