@@ -15,17 +15,17 @@ class Digit:
 	#   -
 	#   6
 
-	ZERO =  [1,1,1,0,1,1,1]
-	ONE =   [0,0,1,0,0,1,0]
-	TWO =   [1,0,1,1,1,0,1]
-	THREE = [1,0,1,1,0,1,1]
-	FOUR =  [0,1,1,1,0,1,0]
-	FIVE =  [1,1,0,1,0,1,1]
-	SIX =   [1,1,0,1,1,1,1]
-	SEVEN = [1,0,1,0,0,1,0]
-	EIGHT = [1,1,1,1,1,1,1]
-	NINE = 	[1,1,1,1,0,1,1]
-	NOTH =  [0,0,0,0,0,0,0]
+	ZERO = 0b01110111 # [1,1,1,0,1,1,1]
+	ONE = 0b00100100  # [0,0,1,0,0,1,0]
+	TWO = 0b01011101  #  [1,0,1,1,1,0,1]
+	THREE = 0b01101101 # [1,0,1,1,0,1,1]
+	FOUR = 0b00101110 # [0,1,1,1,0,1,0]
+	FIVE = 0b01101011 # [1,1,0,1,0,1,1]
+	SIX = 0b01111011 #  [1,1,0,1,1,1,1]
+	SEVEN = 0b00100101 # [1,0,1,0,0,1,0]
+	EIGHT = 0b01111111 # [1,1,1,1,1,1,1]
+	NINE = 0b01101111 # 	[1,1,1,1,0,1,1]
+	NOTH = 0b00000000 # [0,0,0,0,0,0,0]
 
 	DIGITMAP = [ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NOTH]
 
@@ -49,13 +49,16 @@ class Digit:
 
 		pin = []
 		value = self.multibus.read_byte(self.startpin)
+		value = value & 0b01111111
 		logging.debug('Value: ' + str(value))
 
+		"""
 		for x in range( 0, self.SEGMENT_COUNT ) :
 
 			pinvalue = ( value & pow( 2, x) ) >> x 
 			logging.debug('Pin ' + str(x) + ' value: ' + str(pinvalue))
 			pin.append(pinvalue)
+		"""
 
-		return (self.DIGITMAP.index(pin) % 10 )
+		return (self.DIGITMAP.index(value) % 10 )
 
