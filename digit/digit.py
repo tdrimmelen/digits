@@ -49,7 +49,7 @@ class Digit:
 
 		value = self.multibus.read_byte(self.startpin)
 		value = value & 0b01111111
-		logging.debug('Value: ' + str(value))
+		#logging.debug('Value: ' + str(value))
 
 		return (self.DIGITMAP.index(value) % 10 )
 
