@@ -30,24 +30,24 @@ class Multibus:
 		#startport is port where first part of byte is read from
 		startport = ( start - 1 ) // self.PINSPERPORT
 		startport = startport % (self.PINCOUNT / self.PINSPERPORT) 
-		logging.debug('Startport: ' + str(startport))
+		#logging.debug('Startport: ' + str(startport))
 
 		#startbus is bus where first part of byte is read from
 		startbus = ( start - 1) // self.PINCOUNT
-		logging.debug('Startbus: ' + str(startbus))
+		#logging.debug('Startbus: ' + str(startbus))
 
 		#startpin is pin where byte read start from
 		startpin = ( ( start- 1 ) % self.PINSPERPORT ) + 1
-		logging.debug('Startpin: ' + str(startpin))
+		#logging.debug('Startpin: ' + str(startpin))
 
 		value = (self.buslist[ startbus ]).read_port( startport )
-		logging.debug('Value: ' + str(value))
+		#logging.debug('Value: ' + str(value))
 
 		if ( startpin > 1 ):
 
 			#read value from next port in row
 			value2 = (self.buslist[startbus + startport]).read_port(1 - startport)
-			logging.debug('Value2: ' + str(value2))
+			#logging.debug('Value2: ' + str(value2))
 
 			"""
 			Example
@@ -58,14 +58,14 @@ class Multibus:
 			"""
 			#move read value to start
 			value = value >> (startpin - 1) 
-			logging.debug('Value shifted: ' + str(value))
+			#logging.debug('Value shifted: ' + str(value))
 
 			value2 = ( value2 << (8 - ( startpin - 1 ) ) ) % 256
-			logging.debug('Value2 shifted: ' + str(value2))
+			#logging.debug('Value2 shifted: ' + str(value2))
 
 			value = value + value2
 
-		logging.debug('Return: ' + str(value))
+		#logging.debug('Return: ' + str(value))
 		return value
 
 
