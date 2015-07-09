@@ -1,10 +1,16 @@
-#!/usr/bin/python
+import sys, os
+
+sys.path.append(os.path.dirname(__file__) + '/..')
+sys.path.append(os.path.dirname(__file__) + '/../IOPi')
+
 from ABE_helpers import ABEHelpers
 from ABE_IoPi import IoPi
 import time
 import os
 
+import multibus
 import digit
+
 """
 ================================================
 ABElectronics IO Pi 32-Channel Port Expander - Input Read Demo
@@ -23,7 +29,7 @@ i2c_helper = ABEHelpers()
 i2c_bus = i2c_helper.get_smbus()
 multibus = [ IoPi(i2c_bus, 0x20), IoPi(i2c_bus, 0x21)]
 
-d = digit.Digit(multibus,29)
+d = digit.Digit(multibus,8)
 while True:
 	# clear the console
 	os.system('clear')
