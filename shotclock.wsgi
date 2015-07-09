@@ -19,9 +19,9 @@ import json
 def shotclocktime():
 
 	try:
-		logging.debug('shotclockpath() start')
+		logging.info('shotclockpath() start')
 		time = s.getJSONTime()
-		logging.debug('shotclockpath() end')
+		logging.info('shotclockpath() end')
 		return time
 	except:
 		logging.exception('Uncaught exception')

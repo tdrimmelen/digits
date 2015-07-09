@@ -19,9 +19,9 @@ import json
 def timeclocktime():
 
 	try:
-		logging.debug('timeclockpath() start')
+		logging.info('timeclockpath() start')
 		time = s.getJSONTime()
-		logging.debug('timeclockpath() end')
+		logging.info('timeclockpath() end')
 		return time
 	except:
 		logging.exception('Uncaught exception')
