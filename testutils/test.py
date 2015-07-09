@@ -1,10 +1,12 @@
-#!/usr/bin/python
-import time
-import os
+import sys,os
 
-import testshotclock
-import logging
-import logging.config
+sys.path.append(os.path.dirname(__file__) + '/..')
+sys.path.append(os.path.dirname(__file__) + '/../IOPi')
+
+
+import time
+
+import shotclock
 
 """
 ================================================
@@ -21,14 +23,13 @@ Initialise the IOPi device using the default addresses, you will need to
 change the addresses if you have changed the jumpers on the IO Pi
 """
 
-logging.config.fileConfig('logger.cfg') #logfile config
-logging.info('Started')
 
-d = testshotclock.Testshotclock()
+d = shotclock.Shotclock()
 while True:
 	# clear the console
 	os.system('clear')
 
 	print 'Output: ' + d.getJSONTime();
-	time.sleep(0.1)
+	time.sleep(0.05)
+
 
