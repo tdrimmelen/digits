@@ -15,8 +15,8 @@ class Timeclock:
 
 		self.tenminute = Digit(multibus, 1, True)
 		self.minute = Digit(multibus, 8, True)
-		self.tensecond = Digit(multibus, 15, True)
-		self.second = Digit(multibus, 22, True)
+		self.tensecond = Digit(multibus, 17, True)
+		self.second = Digit(multibus, 24, True)
 	
 	def getJSONTime(self):
 

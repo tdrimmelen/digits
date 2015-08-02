@@ -32,6 +32,7 @@ class Digit:
 	def __init__(self, mb, startpin, invert=False):
 		self.multibus = Multibus(mb)
 		self.startpin = startpin
+		self.invert = invert
 
 		for bus in mb :
 			bus.set_port_direction(0, 0xFF)
@@ -40,16 +41,18 @@ class Digit:
 			bus.set_port_direction(1, 0xFF)
 			bus.set_port_pullups(1, 0x00)
 
-			if invert :
-				bus.invert_port(0, 1)
-				bus.invert_port(1, 1)
-
 	# throw ValueError when not found
 	def read(self):
 
 		value = self.multibus.read_byte(self.startpin)
+
+		# invert value if needed
+		if self.invert :
+			value = ~value
+ 
+		# We only read 7 segments (7 bits)
 		value = value & 0b01111111
-		#logging.debug('Value: ' + str(value))
+		logging.debug('Segment reads (most upper is most right): ' + format(value, '#010b'))
 
 		return (self.DIGITMAP.index(value) % 10 )
 
