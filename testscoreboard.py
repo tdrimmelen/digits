@@ -8,7 +8,7 @@ class Testscoreboard:
 	def __init__(self):
 
 		self.home = 0
-		self.away = 0
+		self.guest = 0
 		self.error = False
 
 	def getJSONScore(self):
@@ -17,12 +17,12 @@ class Testscoreboard:
 
 			return json.dumps({'status' : 'Error', 'ErrorDetail' : 'Testerror', 'ErrorMessage' : 'No valid score read' })
 
-		return json.dumps({'status' : 'OK', 'home' : self.home , 'away' : self.away})
+		return json.dumps({'status' : 'OK', 'home' : self.home , 'guest' : self.guest})
 
-	def setScore(self, home, away):
+	def setScore(self, home, guest):
 
 		self.home = home
-		self.away = away
+		self.guest = guest
 
 	def inError(self, error):
 

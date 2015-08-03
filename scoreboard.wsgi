@@ -48,12 +48,12 @@ def testscoreboardsetscore():
 	entity = json.loads(data)
 	if not entity.has_key('home'):
 		abort(400, 'No home specified')
-	if not entity.has_key('away'):
-		abort(400, 'No away specified')
+	if not entity.has_key('guest'):
+		abort(400, 'No guest specified')
 	home = entity['home']
-	away = entity['away']
+	guest = entity['guest']
 
-	ts.setScore(home, away)
+	ts.setScore(home, guest)
 
 @route('/test/score')
 def testscoreboardscore():
