@@ -17,7 +17,7 @@ if [ -z "$docker" ]; then
 	echo "i2c-dev" >> /etc/modules
 fi 
 
-ln -s /home/${app}/${app}/conf/${module} /etc/apache2/sites-available/${module}
+ln -s /home/${app}/${app}/conf/${module}.conf /etc/apache2/sites-available/${module}.conf
 a2enmod wsgi
 a2dissite 000-default
 a2ensite ${module}
