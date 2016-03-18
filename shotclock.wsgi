@@ -63,7 +63,7 @@ def testshotclocktime():
 	return ts.getJSONTime()
 
 
-s = shotclock.Shotclock()
+s = shotclock.Shotclock(os.path.dirname(__file__) + '/digits.cfg')
 ts = testshotclock.Testshotclock()
 
 logging.config.fileConfig(os.path.dirname(__file__) + '/logger.cfg') #logfile config

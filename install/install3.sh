@@ -28,5 +28,5 @@ chown ${app}:${app} /var/log/${app}
 cp -r /home/${app}/${app}/conf/sudoers.d/ /etc/
 chmod 440 /etc/sudoers.d/*
 
-echo "Finished install. Reboot Pi now (type reboot followed by enter)"
+
 

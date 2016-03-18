@@ -63,7 +63,7 @@ def testtimeclocktime():
 	return ts.getJSONTime()
 
 
-s = timeclock.Timeclock()
+s = timeclock.Timeclock(os.path.dirname(__file__) + '/digits.cfg')
 ts = testtimeclock.Testtimeclock()
 
 logging.config.fileConfig(os.path.dirname(__file__) + '/logger.cfg') #logfile config

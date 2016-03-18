@@ -61,7 +61,7 @@ def testscoreboardscore():
 	return ts.getJSONScore()
 
 
-s = scoreboard.Scoreboard()
+s = scoreboard.Scoreboard(os.path.dirname(__file__) + '/digits.cfg')
 ts = testscoreboard.Testscoreboard()
 
 logging.config.fileConfig(os.path.dirname(__file__) + '/logger.cfg') #logfile config

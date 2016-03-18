@@ -4,20 +4,25 @@ from ABE_helpers import ABEHelpers
 from ABE_IoPi import IoPi
 import json
 import logging
+import ConfigParser
 
 class Scoreboard:
 
-	def __init__(self):
+	def __init__(self, configfilename):
 
+		config = ConfigParser.RawConfigParser()
+		config.read(configfilename)
+		inverted_logic = config.getboolean(self.__class__.__name__, 'inverted_logic')
+	
 		i2c_helper = ABEHelpers()
 		i2c_bus = i2c_helper.get_smbus()
 		multibus = [ IoPi(i2c_bus, 0x22), IoPi(i2c_bus, 0x23)]
 
-		self.tenhome = Digit(multibus, 1, True)
-		self.home = Digit(multibus, 8, True)
-		self.tenguest = Digit(multibus, 17, True)
-		self.guest = Digit(multibus, 24, True)
-	
+		self.tenhome = Digit(multibus, 1, inverted_logic)
+		self.home = Digit(multibus, 8, inverted_logic)
+		self.tenguest = Digit(multibus, 17, inverted_logic)
+		self.guest = Digit(multibus, 24, inverted_logic)
+
 	def getJSONScore(self):
 
 		# Try 2 times as it can return ValueError if time is changing
