@@ -14,7 +14,7 @@ elif [ -f /etc/apache2/sites-available/scoreboard ]; then
 
 else
 
-        echo No moudle found!!!
+        echo No module found!!!
         exit 1
 fi
 
