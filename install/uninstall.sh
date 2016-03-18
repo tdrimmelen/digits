@@ -18,9 +18,11 @@ else
         exit 1
 fi
 
-a2ensite ${module}
+a2dissite ${module}
 
 rm /etc/apache2/sites-available/${module}
+
+service apache2 stop
 
 deluser --remove-home ${app}
 
