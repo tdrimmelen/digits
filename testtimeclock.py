@@ -50,8 +50,8 @@ class Testtimeclock:
 
 	def reset(self):
 
-        self.time = 0.0
-        self.run = False
+    	self.time = 0.0
+    	self.run = False
 
 	def setTime(self, minute, second):
 
