@@ -49,7 +49,7 @@ def testtimeclockStop():
 def testtimeclockStartStop():
 
 	ts.startstop()
-	if ts.getRunning()
+	if ts.getRunning():
 		return "Started"
 	else
 		return "Stopped
