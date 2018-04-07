@@ -41,7 +41,7 @@ class Testtimeclock:
 
 		if ( self.run ):
 			self.stop()
-		else
+		else:
 			self.start()
 
 	def getRunning(self):
