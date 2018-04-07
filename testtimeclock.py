@@ -33,13 +33,25 @@ class Testtimeclock:
 
 	def stop(self):
 
-		self.time = self.time + time() - self.starttime
-		self.run = False
+		if ( self.run ):
+			self.time = self.time + time() - self.starttime
+			self.run = False
+
+	def startstop(self):
+
+		if ( self.run ):
+			self.stop()
+		else
+			self.start()
+
+	def getRunning(self):
+
+		return self.run
 
 	def reset(self):
 
-                self.time = 0.0
-                self.run = False
+        self.time = 0.0
+        self.run = False
 
 	def setTime(self, minute, second):
 

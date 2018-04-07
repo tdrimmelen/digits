@@ -39,11 +39,20 @@ def testtimeclockStop():
 	ts.stop()
 	return "Stopped"
 
-@route('/test/reset', method='PUT')
-def testtimeclockReset():
+@route('/test/stop', method='PUT')
+def testtimeclockStop():
 
-	ts.reset()
+	ts.stop()
 	return "Stopped"
+
+@route('/test/startstop', method='PUT')
+def testtimeclockStartStop():
+
+	ts.startstop()
+	if ts.getRunning()
+		return "Started"
+	else
+		return "Stopped
 
 @route('/test/inError', method='PUT')
 def testtimeclockinError():

@@ -66,6 +66,22 @@
 			});
 		}
 
+		function putStartStop() {
+			dojo.xhrPut({
+				// The URL of the request
+				url: "../../timeclock/test/startstop",
+				handleAs: "text",
+				postData: dojo.toJson({ stub: "False" }),
+				// The success callback with result from server
+				load: updateContent,
+				// The error handler
+				error: function () {
+					// Do nothing -- keep old content there
+				}
+
+			});
+		}
+
 		function reset() {
 			dojo.xhrPut({
 				// The URL of the request
@@ -94,6 +110,7 @@
 
 	<button id="start" onClick="putStart();" accesskey="q">Start</button>
 	<button id="stop" onClick="putStop();" accesskey="a">Stop</button>
+	<button id="startstop" onClick="putStartStop();" accesskey="a">Start/Stop</button>
 	<br />
 	<br />
 	<button id="reset" onClick="resetConfirm();">Reset</button>
