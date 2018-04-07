@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Management</title>
+	<!-- load dojo and provide config via data attribute -->
+	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/document.css" />
+	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/claro.css" />
+	<script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js">
+		data - dojo - config="isDebug: true,parseOnLoad: true" >
+	</script>
+	<script>
+			require(["dijit/ConfirmDialog", "dojo/domReady!"], function (ConfirmDialog) {
+				myDialog = new ConfirmDialog({
+					title: "Confirm",
+					style: "width: 300px"
+				});
+			});
+	</script>
+	<script>
+
+		function updateContent(newContent) {
+			// Replace newline with <br>
+			content = newContent.replace(/(\\n)/g, '<br \>');
+
+			var contentNode = dojo.byId("contentNode");
+			dojo.style(contentNode, "display", "");
+			contentNode.innerHTML = "<strong>Text from server:</strong><br /><br />" +
+				content;
+			// Log to console
+			console.info("Loaded from server:  ", content);
+		}
+
+
+
+		function putStart() {
+			dojo.xhrPut({
+				// The URL of the request
+				url: "../../timeclock/test/start",
+				handleAs: "text",
+				postData: dojo.toJson({ stub: "False" }),
+				// The success callback with result from server
+				load: updateContent,
+				// The error handler
+				error: function () {
+					// Do nothing -- keep old content there
+				}
+
+			});
+		}
+
+		function putStop() {
+			dojo.xhrPut({
+				// The URL of the request
+				url: "../../timeclock/test/stop",
+				handleAs: "text",
+				postData: dojo.toJson({ stub: "False" }),
+				// The success callback with result from server
+				load: updateContent,
+				// The error handler
+				error: function () {
+					// Do nothing -- keep old content there
+				}
+
+			});
+		}
+
+		function reset() {
+			dojo.xhrPut({
+				// The URL of the request
+				url: "../../timeclock/test/reset",
+				handleAs: "text",
+				// The success callback with result from server
+				load: updateContent,
+				// The error handler
+				error: function () {
+					// Do nothing -- keep old content there
+				}
+			});
+		}
+
+		function resetConfirm() {
+			myDialog.set('onExecute', function () { reset(); myDialog.hide(); });
+			myDialog.set('content', 'Please conform reset!');
+			myDialog.show();
+		}
+
+	</script>
+</head>
+
+<body class="claro">
+	<h1>Klok bediening</h1>
+
+	<button id="start" onClick="putStart();" accesskey="q">Start</button>
+	<button id="stop" onClick="putStop();" accesskey="a">Stop</button>
+	<br />
+	<br />
+	<button id="reset" onClick="resetConfirm();">Reset</button>
+	<br />
+
+	<pre id="contentNode" style="display:none;"></pre>
+
+</body>
+
+</html>
