@@ -39,11 +39,11 @@ def testtimeclockStop():
 	ts.stop()
 	return "Stopped"
 
-@route('/test/stop', method='PUT')
+@route('/test/reset', method='PUT')
 def testtimeclockStop():
 
-	ts.stop()
-	return "Stopped"
+	ts.reset()
+	return "Reset executed"
 
 @route('/test/startstop', method='PUT')
 def testtimeclockStartStop():
