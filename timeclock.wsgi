@@ -69,10 +69,10 @@ def testscoreboardsetscore():
 	if not data:
         	abort(400, 'No data received')
 	entity = json.loads(data)
-	if not entity.has_key('home'):
-		abort(400, 'No home specified')
-	if not entity.has_key('guest'):
-		abort(400, 'No guest specified')
+	if not entity.has_key('minute'):
+		abort(400, 'No minue specified')
+	if not entity.has_key('second'):
+		abort(400, 'No second specified')
 	minute = entity['minute']
 	second = entity['second']
 
