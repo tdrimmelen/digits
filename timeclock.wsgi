@@ -52,7 +52,7 @@ def testtimeclockStartStop():
 	if ts.getRunning():
 		return "Started"
 	else:
-		return "Stopped
+		return "Stopped"
 
 @route('/test/inError', method='PUT')
 def testtimeclockinError():
