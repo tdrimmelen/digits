@@ -62,6 +62,22 @@ def testtimeclocktime():
 
 	return ts.getJSONTime()
 
+@route('/test/time', method='PUT')
+def testscoreboardsetscore():
+
+	data = request.body.readline()
+	if not data:
+        	abort(400, 'No data received')
+	entity = json.loads(data)
+	if not entity.has_key('home'):
+		abort(400, 'No home specified')
+	if not entity.has_key('guest'):
+		abort(400, 'No guest specified')
+	minute = entity['minute']
+	second = entity['second']
+
+	ts.setTime(minute, second)
+
 
 s = timeclock.Timeclock(os.path.dirname(__file__) + '/digits.cfg')
 ts = testtimeclock.Testtimeclock()

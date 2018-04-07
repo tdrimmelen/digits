@@ -41,6 +41,10 @@ class Testtimeclock:
                 self.time = 0.0
                 self.run = False
 
+	def setTime(self, minute, second):
+
+		self.time = 25*60 - minute*60.0 - second
+
 	def inError(self, error):
 
 		self.error = error
