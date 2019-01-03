@@ -73,7 +73,7 @@ type = config.get('Shotclock', 'type')
 
 # Start the configured shotclock class
 module = importlib.import_module(type)
-class_ = getattr(module, 'ShotclockC4')
+class_ = getattr(module, type.capitalize())
 s = class_(configFileName)
 
 ts = testshotclock.Testshotclock()

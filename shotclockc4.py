@@ -4,7 +4,7 @@ import ConfigParser
 import threading
 import logging
 
-class ShotclockC4:
+class Shotclockc4:
     empty=""
     def __init__(self, configfilename):
         
