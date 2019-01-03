@@ -11,6 +11,9 @@ apt-get -y install  apache2 \
 	vim \
 	git \
 	zip \
-	python-smbus
+	python-smbus \
+	python-pip
+
+pip install pyserial
 
 

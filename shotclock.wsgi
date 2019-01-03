@@ -10,6 +10,7 @@ import logging
 import logging.config
 import json
 import importlib
+import ConfigParser 
 
 configFileName = os.path.dirname(__file__) + '/digits.cfg'
 
@@ -68,11 +69,11 @@ logging.config.fileConfig(os.path.dirname(__file__) + '/logger.cfg') #logfile co
 #Read shotclock from config file
 config = ConfigParser.RawConfigParser()
 config.read(configFileName)
-type = config.get('shotClock', 'type')
+type = config.get('Shotclock', 'type')
 
 # Start the configured shotclock class
-currentModule = importlib.import_module(__name__)
-class_ = getattr(currentModule, type)
+module = importlib.import_module(type)
+class_ = getattr(module, 'ShotclockC4')
 s = class_(configFileName)
 
 ts = testshotclock.Testshotclock()
