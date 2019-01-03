@@ -2,11 +2,13 @@
 
 app=digits
 module=$1
+branch=$2
 
 if [ -z "$docker" ]; then
 
 	#If not docker than get code from GIT
 	sudo su - ${app} -c "git clone https://www.github.com/tdrimmelen/${app}"
+	sudo su - ${app} -c "cd ${app} \; git checkout ${branch}"
 	sudo su - ${app} -c "git config --global user.email \"pi@noone.nowhere\""
 	sudo su - ${app} -c "git config --global user.name \"Pi\""
 

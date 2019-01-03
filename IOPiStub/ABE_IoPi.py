@@ -141,7 +141,7 @@ class IoPi(object):
         return 1
 
     def read_port(self, port):
-	return 0b00000000
+	    return 0b00000000
 
     def invert_port(self, port, polarity):
         return

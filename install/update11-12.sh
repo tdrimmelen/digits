@@ -18,6 +18,11 @@ if [ ! -f /home/${app}/${app}/digits.cfg ]; then
 	cp /home/${app}/${app}/conf/digits_tmpl.cfg /home/${app}/${app}/digits.cfg
 	chmod u+w /home/${app}/${app}/digits.cfg
 
+	#Write module name to config file
+	cat /home/${app}/${app}/digits.cfg | sed "s/####1/${module}" > /home/${app}/${app}/digits.cfg
+
 fi
+
+
 
 
