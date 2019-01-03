@@ -1,12 +1,12 @@
 #!/bin/bash
 
 if [ "$1" != "shotclock" ] && \
-   [ "$1"  != "shotclockC4" ] && \
-   [ "$1"  != "scoreboard" ] && \
+   [ "$1"  != "shotclockc4" ] && \
+   [ "$1"  != "scoreboard" ] \
    ; then
 	
 	echo "Missing or unknown module"
-	echo "usage: $0 [shotclock|shotclockC4|scoreboard]"
+	echo "usage: $0 [shotclock|shotclockc4|scoreboard]"
 
 	exit 1
 fi
@@ -14,7 +14,7 @@ fi
 module=$1
 basemodule=$1
 
-if [ "$1"  == "shotclockC4" ] ; then
+if [ "$1"  == "shotclockc4" ] ; then
 
 	basemodule="shotclock"
 
