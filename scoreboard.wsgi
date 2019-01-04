@@ -141,7 +141,7 @@ sb = class_(configFileName)
 
 type = config.get('Timeclock', 'type')
 
-if (type != "")
+if (type != ""):
 	# Start the configured timeclock class
 	module = importlib.import_module(type)
 	class_ = getattr(module, type.capitalize())
