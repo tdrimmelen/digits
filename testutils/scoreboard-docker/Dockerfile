@@ -1,11 +1,12 @@
-FROM debian:jessie
+FROM debian:stretch
 
 ENV docker=TRUE
 
 ADD ./digits/install/install1.sh ./
 RUN ./install1.sh
 
-ENV module=scoreboard
+ENV module=scoreboardak30
+ENV basemodule=scoreboard
 
 ADD ./digits/install/install2.sh ./
 RUN ./install2.sh
@@ -16,7 +17,7 @@ RUN chown -R digits:digits /home/digits/digits
 
 
 ADD ./digits/install/install3.sh ./
-RUN ./install3.sh ${module}
+RUN ./install3.sh ${basemodule}
 
 ADD ./digits/install/update11-12.sh ./
 RUN ./update11-12.sh ${module}
