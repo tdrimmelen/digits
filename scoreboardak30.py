@@ -2,12 +2,18 @@ import json
 import serial
 import ConfigParser 
 import threading
+import logging
 
-class ScoreboardAK30:
+class Scoreboardak30:
     empty=""
     def __init__(self, configfilename):
         
-        self.ser = serial.Serial(port='/dev/ttyS0', baudrate=19200)
+        config = ConfigParser.RawConfigParser()
+        config.read(configfilename)
+        port = config.get(self.__class__.__name__, 'port')
+        baudrate = config.getint(self.__class__.__name__, 'baudrate')
+
+        self.ser = serial.Serial(port=port, baudrate=baudrate)
 
         self.home = 0
         self.guest = 0
@@ -22,6 +28,7 @@ class ScoreboardAK30:
     def readserial(self):
         while True:
             input = self.ser.readline()
+            logging.debug('Value read from serial port: ' + input)
 
             self.minutes = int(input[19] + input[20])
             self.seconds = int(input[14] + input[13])
@@ -36,5 +43,3 @@ class ScoreboardAK30:
     def getJSONScore(self):
         return json.dumps({'status' : 'OK', 'home': self.home, 'guest' : self.guest})
 
-    def inError(self, error):
-        self.error = error

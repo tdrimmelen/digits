@@ -2,11 +2,12 @@
 
 if [ "$1" != "shotclock" ] && \
    [ "$1"  != "shotclockc4" ] && \
-   [ "$1"  != "scoreboard" ] \
+   [ "$1"  != "scoreboard" ] && \
+   [ "$1"  != "scoreboardak30" ] \
    ; then
 	
 	echo "Missing or unknown module"
-	echo "usage: $0 [shotclock|shotclockc4|scoreboard]"
+	echo "usage: $0 [shotclock|shotclockc4|scoreboard|scoreboardak30]"
 
 	exit 1
 fi
@@ -17,6 +18,12 @@ basemodule=$1
 if [ "$1"  == "shotclockc4" ] ; then
 
 	basemodule="shotclock"
+
+fi
+
+if [ "$1"  == "scoreboardak30" ] ; then
+
+	basemodule="scoreboard"
 
 fi
 
