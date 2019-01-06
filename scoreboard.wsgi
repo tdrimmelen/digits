@@ -90,7 +90,7 @@ def testtimeclockStop():
 	return "Stopped"
 
 @route('/test/reset', method='PUT')
-def testtimeclockStop():
+def testtimeclockReset():
 
 	ttc.reset()
 	return "Reset executed"
