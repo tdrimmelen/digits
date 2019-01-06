@@ -20,24 +20,24 @@ if [ ! -f /home/${app}/${app}/digits.cfg ]; then
 	#Determine module names
 	case $module in
 		shotclock)
-			$var1="shotclock"
-			$var2=""
-			$var3=""
+			var1="shotclock"
+			var2=""
+			var3=""
 			;;
 		shotclockc4)
-			$var1="shotclockc4"
-			$var2=""
-			$var3=""
+			var1="shotclockc4"
+			var2=""
+			var3=""
 			;;
 		scoreboard)
-			$var1=""
-			$var2="timeclock"
-			$var3="scoreboard"
+			var1=""
+			var2="timeclock"
+			var3="scoreboard"
 			;;
 		scoreboardak30)
-			$var1=""
-			$var2=""
-			$var3="scoreboardak30"
+			var1=""
+			var2=""
+			var3="scoreboardak30"
 			;;
 	esac
 
