@@ -5,7 +5,7 @@ ENV docker=TRUE
 ADD ./digits/install/install1.sh ./
 RUN ./install1.sh
 
-ENV module=scoreboardak30
+ENV module=scoreboard
 ENV basemodule=scoreboard
 
 ADD ./digits/install/install2.sh ./

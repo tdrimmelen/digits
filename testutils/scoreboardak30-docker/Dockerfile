@@ -5,8 +5,8 @@ ENV docker=TRUE
 ADD ./digits/install/install1.sh ./
 RUN ./install1.sh
 
-ENV module=shotclock
-ENV basemodule=shotclock
+ENV module=scoreboardak30
+ENV basemodule=scoreboard
 
 ADD ./digits/install/install2.sh ./
 RUN ./install2.sh
