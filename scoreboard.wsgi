@@ -147,6 +147,8 @@ if (type != ""):
 	class_ = getattr(module, type.capitalize())
 
 	tc = class_(configFileName)
+else:
+	tc = sb
 
 tsb = testscoreboard.Testscoreboard()
 ttc = testtimeclock.Testtimeclock()
