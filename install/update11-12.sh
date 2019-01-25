@@ -24,8 +24,8 @@ if [ ! -f /home/${app}/${app}/digits.cfg ]; then
 			var2=""
 			var3=""
 			;;
-		shotclockc4)
-			var1="shotclockc4"
+		shotclockak30cseries)
+			var1="shotclockak30cseries"
 			var2=""
 			var3=""
 			;;
