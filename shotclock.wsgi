@@ -5,12 +5,14 @@ sys.path.append(os.path.dirname(__file__) + '/IOPi')
 
 import bottle
 from bottle import route, request, abort
-import shotclock
 import testshotclock
 import logging
 import logging.config
 import json
+import importlib
+import ConfigParser 
 
+configFileName = os.path.dirname(__file__) + '/digits.cfg'
 
 # ... build or import your bottle application here ...
 # Do NOT use bottle.run() with mod_wsgi
@@ -62,10 +64,19 @@ def testshotclocktime():
 
 	return ts.getJSONTime()
 
+logging.config.fileConfig(os.path.dirname(__file__) + '/logger.cfg') #logfile config
 
-s = shotclock.Shotclock(os.path.dirname(__file__) + '/digits.cfg')
+#Read shotclock from config file
+config = ConfigParser.RawConfigParser()
+config.read(configFileName)
+type = config.get('Shotclock', 'type')
+
+# Start the configured shotclock class
+module = importlib.import_module(type)
+class_ = getattr(module, type.capitalize())
+s = class_(configFileName)
+
 ts = testshotclock.Testshotclock()
 
-logging.config.fileConfig(os.path.dirname(__file__) + '/logger.cfg') #logfile config
 logging.info('Started')
 application = bottle.default_app()

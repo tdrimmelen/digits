@@ -1,4 +1,8 @@
-This is version 1.2
+This is version 2.0 beta
+
+2018-01-03 Added support for C4 type shotclock
+
+Release 1.2
 
 2016-01-11	Added alternate formatting for '6' and '9'
 2016-03-18	Ported to jessie
