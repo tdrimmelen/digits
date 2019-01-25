@@ -16,7 +16,7 @@ fi
 module=$1
 basemodule=$1
 
-if [ [ "$1"  == "shotclockcseries" ] || [ "$1"  == "shotclockak30" ] ]; then
+if [ "$1"  == "shotclockcseries"  ||  "$1"  == "shotclockak30" ]; then
 
 	basemodule="shotclock"
 	module="shotclockak30cseries"
@@ -51,3 +51,4 @@ chmod u+x *sh
 ./update11-12.sh ${module}
 
 echo "Finished install. Reboot Pi now (type reboot followed by enter)"
+echo "Installed with parameters ${basemodule} ${module} ${branch}"" 
