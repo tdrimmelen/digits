@@ -29,6 +29,21 @@ def shotclocktime():
 		logging.exception('Uncaught exception')
 		raise
 
+@route('/time-as-array')
+def shotclocktimeasarray():
+
+	try:
+		logging.info('shotclockpath() start')
+		time = s.getJSONTime()
+		data = json.loads(time)
+		list= [data]
+		time = json.dumps(list)
+		logging.info('shotclockpath() end')
+		return time
+	except:
+		logging.exception('Uncaught exception')
+		raise
+
 @route('/test/start', method='PUT')
 def testshotclockStart():
 
@@ -63,6 +78,15 @@ def testshotclockinError():
 def testshotclocktime():
 
 	return ts.getJSONTime()
+
+@route('/test/time-as-array')
+def testshotclocktimeasarray():
+
+	time = ts.getJSONTime()
+	data = json.loads(time)
+	list= [data]
+	time = json.dumps(list)
+	return time
 
 logging.config.fileConfig(os.path.dirname(__file__) + '/logger.cfg') #logfile config
 
