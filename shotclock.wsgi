@@ -21,9 +21,9 @@ configFileName = os.path.dirname(__file__) + '/digits.cfg'
 def shotclocktime():
 
 	try:
-		logging.info('shotclockpath() start')
+		logging.info('shotclocktime() start')
 		time = s.getJSONTime()
-		logging.info('shotclockpath() end')
+		logging.info('shotclocktime() end')
 		return time
 	except:
 		logging.exception('Uncaught exception')
@@ -33,12 +33,12 @@ def shotclocktime():
 def shotclocktimeasarray():
 
 	try:
-		logging.info('shotclockpath() start')
+		logging.info('shotclockyimeasarray() start')
 		time = s.getJSONTime()
 		data = json.loads(time)
 		list= [data]
 		time = json.dumps(list)
-		logging.info('shotclockpath() end')
+		logging.info('shotclocktimeasarray() end')
 		return time
 	except:
 		logging.exception('Uncaught exception')
