@@ -23,9 +23,24 @@ configFileName = os.path.dirname(__file__) + '/digits.cfg'
 def scoreboardscore():
 
 	try:
-		logging.info('scoreboardpath() start')
+		logging.info('scoreboardscore() start')
 		score = sb.getJSONScore()
-		logging.info('scoreboardpath() end')
+		logging.info('scoreboardscore() end')
+		return score
+	except:
+		logging.exception('Uncaught exception')
+		raise
+
+@route('/score-as-array')
+def scoreboardscoreasarray():
+
+	try:
+		logging.info('scoreboardscoreasarray() start')
+		score = sb.getJSONScore()
+                data = json.loads(score)
+                list= [data]
+                score = json.dumps(list)
+		logging.info('scoreboardscoreasarray() end')
 		return score
 	except:
 		logging.exception('Uncaught exception')
@@ -65,13 +80,38 @@ def testscoreboardscore():
 
 	return tsb.getJSONScore()
 
+@route('/test/score-as-array')
+def testscoreboardscoreasarray():
+
+        score = tsb.getJSONScore()
+        data = json.loads(score)
+        list= [data]
+        score = json.dumps(list)
+
+	return score
+
 @route('/time')
 def timeclocktime():
 
 	try:
-		logging.info('timeclockpath() start')
+		logging.info('timeclocktime() start')
 		time = tc.getJSONTime()
-		logging.info('timeclockpath() end')
+		logging.info('timeclocktime() end')
+		return time
+	except:
+		logging.exception('Uncaught exception')
+		raise
+
+@route('/time-as-array')
+def timeclocktimeasarray():
+
+	try:
+		logging.info('timeclocktimeasarray) start')
+		time = tc.getJSONTime()
+                data = json.loads(time)
+                list= [data]
+                time = json.dumps(list)
+		logging.info('timeclocktimeasarray() end')
 		return time
 	except:
 		logging.exception('Uncaught exception')
@@ -108,6 +148,16 @@ def testtimeclockStartStop():
 def testtimeclocktime():
 
 	return ttc.getJSONTime()
+
+@route('/test/time-as-array')
+def testtimeclocktimeasarray():
+
+        time = ttc.getJSONTime()
+        data = json.loads(time)
+        list= [data]
+        time = json.dumps(list)
+
+	return time
 
 @route('/test/time', method='PUT')
 def testscoreboardsetscore():

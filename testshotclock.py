@@ -24,7 +24,7 @@ class Testshotclock:
 
 		elaptime = max(0, 30 - elaptime)
 
-		return json.dumps({'status' : 'OK', 'time': elaptime})
+		return json.dumps({'status' : 'OK', 'time': (int(elaptime + 0.5))})
 
 	def start(self):
 

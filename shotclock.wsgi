@@ -21,9 +21,24 @@ configFileName = os.path.dirname(__file__) + '/digits.cfg'
 def shotclocktime():
 
 	try:
-		logging.info('shotclockpath() start')
+		logging.info('shotclocktime() start')
 		time = s.getJSONTime()
-		logging.info('shotclockpath() end')
+		logging.info('shotclocktime() end')
+		return time
+	except:
+		logging.exception('Uncaught exception')
+		raise
+
+@route('/time-as-array')
+def shotclocktimeasarray():
+
+	try:
+		logging.info('shotclockyimeasarray() start')
+		time = s.getJSONTime()
+		data = json.loads(time)
+		list= [data]
+		time = json.dumps(list)
+		logging.info('shotclocktimeasarray() end')
 		return time
 	except:
 		logging.exception('Uncaught exception')
@@ -63,6 +78,15 @@ def testshotclockinError():
 def testshotclocktime():
 
 	return ts.getJSONTime()
+
+@route('/test/time-as-array')
+def testshotclocktimeasarray():
+
+	time = ts.getJSONTime()
+	data = json.loads(time)
+	list= [data]
+	time = json.dumps(list)
+	return time
 
 logging.config.fileConfig(os.path.dirname(__file__) + '/logger.cfg') #logfile config
 
