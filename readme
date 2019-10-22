@@ -1,4 +1,8 @@
-This is version 2.0
+This is version 2.5
+
+2019-10-22 Added support for vMix datasources
+
+Release 2.0
 
 2018-01-03 Added support for C4 type shotclock
 2018-01-25 Added support for AK30 shotclock and scoreboard,
