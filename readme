@@ -1,6 +1,7 @@
-This is version 2.5
+This is version 2.5.1
 
 2019-10-22 Added support for vMix datasources
+2019-10-24 Solved issue with leading zero for second field
 
 Release 2.0
 
