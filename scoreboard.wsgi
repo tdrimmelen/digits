@@ -109,6 +109,8 @@ def timeclocktimeasarray():
 		logging.info('timeclocktimeasarray) start')
 		time = tc.getJSONTime()
                 data = json.loads(time)
+		data['second'] = "%02d" % (data['second'],)
+		data['minute'] = str(data['minute'])
                 list= [data]
                 time = json.dumps(list)
 		logging.info('timeclocktimeasarray() end')
@@ -154,6 +156,8 @@ def testtimeclocktimeasarray():
 
         time = ttc.getJSONTime()
         data = json.loads(time)
+	data['second'] = "%02d" % (data['second'],)
+	data['minute'] = str(data['minute'])
         list= [data]
         time = json.dumps(list)
 
