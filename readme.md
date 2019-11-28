@@ -1,6 +1,10 @@
 # Release notes
 
-This is release 2.6
+This is release 2.6.1
+
+2019-11-28 Fixed serial reading for DataDisplay scoreboard
+
+## Release 2.6
 
 2019-11-26 Added support for DataDisplay scoreboard
 
