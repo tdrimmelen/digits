@@ -3,6 +3,7 @@ import serial
 import ConfigParser 
 import threading
 import logging
+import io
 
 class Scoreboarddatadisplay:
     empty=""
@@ -16,7 +17,7 @@ class Scoreboarddatadisplay:
         logging.debug(self.__class__.__name__ + ': Init with port: ' + port)
         logging.debug(self.__class__.__name__ + ': Init with baudrate: ' + str(baudrate))
         self.ser = serial.Serial(port=port, baudrate=baudrate)
-		
+        
         self.home = 0
         self.guest = 0
         self.minutes = 0
@@ -28,13 +29,20 @@ class Scoreboarddatadisplay:
         self.errorMessage = ''
 
         self.ser.flushInput()
+        
         t1 = threading.Thread(target = self.readserial)
         t1.start()
 
     def readserial(self):
         last_pressed = False
+        response = ''
         while True:
-            input = self.ser.readline()
+            response += self.ser.read()
+            if not response[-1:] is '}':
+                continue
+
+            input = [ord(c) for c in response]
+            response = ''
             # if input[13] == 'p' (char 80) there is an update to the time / scoreboard
             if input[13] is 80:
                 if input[10] is 52:
