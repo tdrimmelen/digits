@@ -26,9 +26,9 @@ if [ "$1"  == "shotclockcseries" ] || [ "$1"  == "shotclockak30" ] ; then
 fi
 
 if [ "$1"  == "scoreboardak30" ] || \
-	[ "$1"  == "scoreboarddatadisplay" ] || \ 
-	[ "$1"  == "scoreboardwesterstrandbasic200250" ] \ 
-	; then
+   [ "$1"  == "scoreboarddatadisplay" ] || \ 
+   [ "$1"  == "scoreboardwesterstrandbasic200250" ] \ 
+   ; then
 
 	basemodule="scoreboard"
 
