@@ -44,6 +44,11 @@ if [ ! -f /home/${app}/${app}/digits.cfg ]; then
 			var2=""
 			var3="scoreboarddatadisplay"
 			;;
+		scoreboardwesterstrandbasic200250)
+			var1=""
+			var2=""
+			var3="scoreboardwesterstrandbasic200250"
+			;;
 	esac
 
 	#Write module names to config file

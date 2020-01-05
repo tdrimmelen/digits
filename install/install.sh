@@ -6,10 +6,11 @@ if [ "$1" != "shotclock" ] && \
    [ "$1"  != "scoreboard" ] && \
    [ "$1"  != "scoreboardak30" ] && \
    [ "$1"  != "scoreboarddatadisplay" ] \
+   [ "$1"  != "scoreboardwesterstrandbasic200250" ] \
    ; then
 	
 	echo "Missing or unknown module"
-	echo "usage: $0 [shotclock|shotclockcseries|shotclockak30|scoreboard|scoreboardak30|scoreboarddatadisplay]"
+	echo "usage: $0 [shotclock|shotclockcseries|shotclockak30|scoreboard|scoreboardak30|scoreboarddatadisplay|scoreboardwesterstrandbasic200250]"
 
 	exit 1
 fi
@@ -24,7 +25,10 @@ if [ "$1"  == "shotclockcseries" ] || [ "$1"  == "shotclockak30" ] ; then
 
 fi
 
-if [ "$1"  == "scoreboardak30" ] || [ "$1"  == "scoreboarddatadisplay" ] ; then
+if [ "$1"  == "scoreboardak30" ] || \
+	[ "$1"  == "scoreboarddatadisplay" ] \ 
+	[ "$1"  == "scoreboardwesterstrandbasic200250" ] \ 
+	; then
 
 	basemodule="scoreboard"
 
