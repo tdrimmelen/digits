@@ -8,7 +8,7 @@ class Scoreboardwesterstrandbasic200250:
     empty=""
     def __init__(self, configfilename):
         
-        config = configparser.rawconfigparser()
+        config = ConfigParser.RawConfigParser()
         config.read(configfilename)
         port = config.get(self.__class__.__name__, 'port')
         baudrate = config.getint(self.__class__.__name__, 'baudrate')
