@@ -1,6 +1,10 @@
 # Release notes
 
-This is release 2.6.1
+This is release 2.7
+
+2020-01-05 Added support for Westen Strand Basic 200-250 scoreboard
+
+## Release 2.6.1
 
 2019-11-28 Fixed serial reading for DataDisplay scoreboard
 
