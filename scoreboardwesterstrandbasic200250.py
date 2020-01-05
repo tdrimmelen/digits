@@ -15,7 +15,7 @@ class Scoreboardwesterstrandbasic200250:
 
         logging.debug(self.__class__.__name__ + ': init with port: ' + port)
         logging.debug(self.__class__.__name__ + ': init with baudrate: ' + str(baudrate))
-        self.ser = serial.serial(port=port, baudrate=baudrate)
+        self.ser = serial.Serial(port=port, baudrate=baudrate)
         
         self.home = 0
         self.guest = 0
