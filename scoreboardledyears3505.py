@@ -7,7 +7,7 @@ import io
 
 class Scoreboardledyears3505:
     empty=""
-    def __init__(self, configfledyearsilename):
+    def __init__(self, configfilename):
         
         config = ConfigParser.RawConfigParser()
         config.read(configfilename)
