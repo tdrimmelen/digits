@@ -1,16 +1,21 @@
 # Release notes
 
-This is release 2.7
+This is release 2.8
+
+2020-01-26 Added support for LedYears 3510 scoreboard
+           Renamed ledyears to ledyears3505
+
+## Release 2.7
 
 2020-01-05 Added support for Westen Strand Basic 200-250 scoreboard
 
 ## Release 2.6.1
 
-2019-11-28 Fixed serial reading for DataDisplay scoreboard
+2019-11-28 Fixed serial reading for ledyears scoreboard
 
 ## Release 2.6
 
-2019-11-26 Added support for DataDisplay scoreboard
+2019-11-26 Added support for ledyears scoreboard
 
 ## Release 2.5.1
 
