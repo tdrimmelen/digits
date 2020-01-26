@@ -5,7 +5,7 @@ import threading
 import logging
 import io
 
-class Scoreboarddatadisplay:
+class Scoreboarddatadisplay3505:
     empty=""
     def __init__(self, configfilename):
         
