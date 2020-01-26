@@ -11,7 +11,7 @@ if [ "$1" != "shotclock" ] && \
    ; then
 	
 	echo "Missing or unknown module"
-	echo "usage: $0 [shotclock|shotclockcseries|shotclockak30|scoreboard|scoreboardak30|scoreboardledyears3505|scoreboardledyears3510|scoreboardwesterstrandbasic200250]"
+	echo "usage: install.sh [shotclock|shotclockcseries|shotclockak30|scoreboard|scoreboardak30|scoreboardledyears3505|scoreboardledyears3510|scoreboardwesterstrandbasic200250]"
 
 	exit 1
 fi
