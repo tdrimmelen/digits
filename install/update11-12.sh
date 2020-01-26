@@ -39,10 +39,10 @@ if [ ! -f /home/${app}/${app}/digits.cfg ]; then
 			var2=""
 			var3="scoreboardak30"
 			;;
-		scoreboarddatadisplay3505)
+		scoreboardledyears3505)
 			var1=""
 			var2=""
-			var3="scoreboarddatadisplay3505"
+			var3="scoreboardledyears3505"
 			;;
 		scoreboardledyears3510)
 			var1=""
