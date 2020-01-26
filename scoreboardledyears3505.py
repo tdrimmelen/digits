@@ -5,9 +5,9 @@ import threading
 import logging
 import io
 
-class Scoreboarddatadisplay3505:
+class Scoreboardledyears3505:
     empty=""
-    def __init__(self, configfilename):
+    def __init__(self, configfledyearsilename):
         
         config = ConfigParser.RawConfigParser()
         config.read(configfilename)
