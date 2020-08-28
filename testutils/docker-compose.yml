@@ -1,0 +1,14 @@
+version: '3'
+services:
+  scoreboard:
+    build:
+      context: . 
+      dockerfile: digits/testutils/scoreboard-docker/Dockerfile
+    ports:
+      - "8080:80"
+  shotclock:
+    build:
+      context: . 
+      dockerfile: digits/testutils/shotclock-docker/Dockerfile
+    ports:
+      - "8081:80"

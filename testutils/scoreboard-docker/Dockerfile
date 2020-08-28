@@ -16,7 +16,7 @@ RUN cd /home/digits/digits && rm IOPi && ln -s IOPiStub IOPi
 RUN chown -R digits:digits /home/digits/digits
 
 
-ADD ./digits/install/install3.sh ./
+ADD ./digits/install/install3.sh ./ 
 RUN ./install3.sh ${basemodule}
 
 ADD ./digits/install/update11-12.sh ./
@@ -24,4 +24,4 @@ RUN ./update11-12.sh ${module}
 
 EXPOSE 80
 
-CMD service apache2 start && /bin/bash 
+CMD apachectl -D FOREGROUND 

@@ -24,4 +24,4 @@ RUN ./update11-12.sh ${module}
 
 EXPOSE 80
 
-CMD service apache2 start && /bin/bash 
+CMD apachectl -D FOREGROUND
