@@ -38,23 +38,24 @@ class Scoreboardwesterstrandbasic200250:
         while True:
             c = self.ser.read(1)
             response += c
-			
-            if not ord(response[-1:]) is 2:        
-                continue
-				   
-            if len(response) < 5:
-                response = ''
-                continue
-            # time
-            if response[4] is '!':
-                self.minutes = int(response[6] + response[7])
-                self.seconds = int(response[8] + response[9])
-            if response[4] is '#':
-                self.home = int(response[6] + response[7])
-                self.guest = int(response[10] + response[11])    
-            if response[4] is '%' and ord(response[5]) is 32:
-                self.period = int(response[6])
-				
+            try:
+                if not ord(response[-1:]) is 2:        
+                    continue
+                       
+                if len(response) < 5:
+                    response = ''
+                    continue
+                # time
+                if response[4] is '!':
+                    self.minutes = int(response[6] + response[7])
+                    self.seconds = int(response[8] + response[9])
+                if response[4] is '#':
+                    self.home = int(response[6] + response[7])
+                    self.guest = int(response[10] + response[11])    
+                if response[4] is '%' and ord(response[5]) is 32:
+                    self.period = int(response[6])
+            except:
+                print("Error parsing score from line: " + response)
             response = ''
 
             
@@ -69,4 +70,3 @@ class Scoreboardwesterstrandbasic200250:
             return json.dumps({'status' : 'OK', 'home': self.home, 'guest' : self.guest})
         else:
             return json.dumps({'status' : 'Error', 'ErrorDetail' : self.errorDetail, 'ErrorMessage' : self.errorMessage})
-           
