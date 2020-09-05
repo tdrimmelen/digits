@@ -49,10 +49,10 @@ class Scoreboardwesterstrandbasic200250:
                 if response[4] is '!':
                     self.minutes = int(response[6] + response[7])
                     self.seconds = int(response[8] + response[9])
-                if response[4] is '#':
+                elif response[4] is '#':
                     self.home = int(response[6] + response[7])
                     self.guest = int(response[10] + response[11])    
-                if response[4] is '%' and ord(response[5]) is 32:
+                elif response[4] is '%' and ord(response[5]) is 32:
                     self.period = int(response[6])
             except:
                 print("Error parsing score from line: " + response)
