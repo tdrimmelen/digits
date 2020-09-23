@@ -15,5 +15,6 @@ apt-get -y install  apache2 \
 	python-pip
 
 pip install pyserial
+pip install simpleaudio
 
 
