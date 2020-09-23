@@ -2,6 +2,7 @@ from time import sleep, time
 import json
 import logging
 import math
+import buzzercontroller
 
 class Testshotclock:
 
