@@ -1,2 +1,6 @@
+# Version for Debian
 digits   ALL=(ALL:ALL) NOPASSWD: /usr/bin/su - -c /home/digits/digits/scripts/update.sh
+
+#Version for Raspbian
+digits   ALL=(ALL:ALL) NOPASSWD: /usr/su - -c /home/digits/digits/scripts/update.sh
 
