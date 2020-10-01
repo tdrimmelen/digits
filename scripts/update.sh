@@ -1,14 +1,16 @@
 #!/bin/bash
 
+app=digits
+
 cd /home/digits/digits
 
 echo Starting update.
 
 # Save local edits
-git stash
+sudo su - ${app} -c "git stash"
 
 # Update from repository
-git pull
+sudo su - ${app} -c "git pull"
 
 # Run update script
 source install/update.sh
