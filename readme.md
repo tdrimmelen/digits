@@ -1,6 +1,10 @@
 # Release notes
 
-This is release 2.8
+This is release 2.9
+
+2020-09-01 Fixed and improved update functionality
+           
+## Release 2.8
 
 2020-01-26 Added support for LedYears 3510 scoreboard
            Renamed ledyears to ledyears3505
