@@ -8,7 +8,7 @@ echo Starting update.
 git stash
 
 # Update from repository
-git pull https://github.com/tdrimmelen/digits.git
+git pull
 
 # Run update script
 source install/update.sh

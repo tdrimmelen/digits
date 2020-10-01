@@ -49,5 +49,5 @@ class Command:
 	@staticmethod
 	def update():
 
-		out = Command._run(['sudo',path + 'update.sh'])
+		out = Command._run(['sudo','su','-','-c',path + 'update.sh'])
 		return out
