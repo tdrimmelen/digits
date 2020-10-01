@@ -11,7 +11,7 @@ git stash
 git pull https://github.com/tdrimmelen/digits.git
 
 # Run update script
-sh install/update11-12.sh
+source install/update11-12.sh
 
 echo Update executed. Restarting webserver.
 
