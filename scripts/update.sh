@@ -20,4 +20,4 @@
     echo Update executed. Restarting webserver.
 
     (sleep 1 ; nohup sudo /etc/init.d/apache2 restart > /dev/null 2>&1) &
-} 2>&1 | tee /var/log/digits/update.log
+} 2>&1 | tee -a /var/log/digits/update.log
