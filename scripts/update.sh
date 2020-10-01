@@ -1,21 +1,22 @@
 #!/bin/bash
 
-app=digits
+{
+    app=digits
 
-cd /home/digits/digits
+    cd /home/digits/digits
 
-echo Starting update.
+    echo Starting update.
 
-# Save local edits
-sudo su - ${app} -c "cd ${app} ; git stash"
+    # Save local edits
+    sudo su - ${app} -c "cd ${app} ; git stash"
 
-# Update from repository
-sudo su - ${app} -c "cd ${app} ; git pull"
+    # Update from repository
+    sudo su - ${app} -c "cd ${app} ; git pull"
 
-# Run update script
-source install/update.sh
+    # Run update script
+    source install/update.sh
 
-echo Update executed. Restarting webserver.
+    echo Update executed. Restarting webserver.
 
-(sleep 1 ; nohup sudo /etc/init.d/apache2 restart > /dev/null 2>&1) &
-
+    (sleep 1 ; nohup sudo /etc/init.d/apache2 restart > /dev/null 2>&1) &
+} 2>&1 | tee /var/log/digits/update.log
