@@ -12,6 +12,7 @@ import json
 import importlib
 import ConfigParser 
 
+
 configFileName = os.path.dirname(__file__) + '/digits.cfg'
 
 # ... build or import your bottle application here ...
@@ -76,8 +77,9 @@ def testshotclockinError():
 
 @route('/test/time')
 def testshotclocktime():
-
+	
 	return ts.getJSONTime()
+
 
 @route('/test/time-as-array')
 def testshotclocktimeasarray():

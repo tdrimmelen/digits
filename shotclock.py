@@ -20,6 +20,7 @@ class Shotclock:
 
 		self.tendigit = Digit(multibus, 1, inverted_logic)
 		self.digit = Digit(multibus, 8, inverted_logic)
+
 	
 	def getJSONTime(self):
 
@@ -43,3 +44,4 @@ class Shotclock:
 				continue
 		return json.dumps({'status' : 'Error', 'ErrorDetail' : str(e), 'ErrorMessage' : 'No valid time read' })
 
+			

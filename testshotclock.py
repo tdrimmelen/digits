@@ -3,6 +3,7 @@ import json
 import logging
 import math
 
+
 class Testshotclock:
 
 	def __init__(self):

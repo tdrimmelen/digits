@@ -1,2 +1,2 @@
-digits   ALL=(ALL:ALL) NOPASSWD: /home/digits/digits/scripts/update.sh
+digits   ALL=(ALL:ALL) NOPASSWD: /usr/bin/su - -c /home/digits/digits/scripts/update.sh
 
