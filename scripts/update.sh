@@ -5,6 +5,7 @@
 
     cd /home/digits/digits
 
+    date
     echo Starting update.
 
     # Save local edits
