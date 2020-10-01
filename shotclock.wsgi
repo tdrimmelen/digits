@@ -11,7 +11,7 @@ import logging.config
 import json
 import importlib
 import ConfigParser 
-import shotclockbuzzer
+
 
 configFileName = os.path.dirname(__file__) + '/digits.cfg'
 
@@ -78,13 +78,8 @@ def testshotclockinError():
 @route('/test/time')
 def testshotclocktime():
 	
-	time = ts.getJSONTime()
-	data = json.loads(time)
+	return ts.getJSONTime()
 
-	if data['status'] == 'OK':
-		buzzer.playWhenNeeded(data['time']) 
-
-	return time
 
 @route('/test/time-as-array')
 def testshotclocktimeasarray():
@@ -108,8 +103,6 @@ class_ = getattr(module, type.capitalize())
 s = class_(configFileName)
 
 ts = testshotclock.Testshotclock()
-
-buzzer = shotclockbuzzer.Shotclockbuzzer()
 
 logging.info('Started')
 application = bottle.default_app()
