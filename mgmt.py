@@ -50,4 +50,4 @@ class Command:
 	def update():
 
 		out = Command._run(['sudo','su','-','-c',path + 'update.sh'])
-		return "Update Finished" + out
+		return out
