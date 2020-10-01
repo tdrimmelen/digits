@@ -1,6 +1,0 @@
-#/bin/bash
-
-echo Hi....
-whoami
-
-echo Hi back....
