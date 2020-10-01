@@ -3,7 +3,7 @@
 app=digits
 module=$1
 
-
+# Create the config
 if [ ! -f /home/${app}/${app}/logger.cfg ]; then
 
 	echo "Installing logger.cfg"
@@ -66,3 +66,6 @@ if [ ! -f /home/${app}/${app}/digits.cfg ]; then
 
 	chmod u+w /home/${app}/${app}/digits.cfg
 fi
+
+
+

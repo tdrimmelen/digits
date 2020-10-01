@@ -19,8 +19,8 @@ RUN chown -R digits:digits /home/digits/digits
 ADD ./digits/install/install3.sh ./
 RUN ./install3.sh ${basemodule}
 
-ADD ./digits/install/update11-12.sh ./
-RUN ./update11-12.sh ${module}
+ADD ./digits/install/install4.sh ./
+RUN ./install4.sh ${module}
 
 EXPOSE 80
 

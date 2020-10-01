@@ -6,7 +6,7 @@ module=$1
 
 for file in /home/${app}/${app}/install/update.d/*; do
 
-    [ -f "$file" ]  && sh "$file"
+    [ -f "$file" ]  && source "$file" $module
 
 done
 

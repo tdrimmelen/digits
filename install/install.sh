@@ -48,14 +48,14 @@ fi
 wget https://raw.githubusercontent.com/tdrimmelen/digits/${branch}/install/install1.sh
 wget https://raw.githubusercontent.com/tdrimmelen/digits/${branch}/install/install2.sh
 wget https://raw.githubusercontent.com/tdrimmelen/digits/${branch}/install/install3.sh
-wget https://raw.githubusercontent.com/tdrimmelen/digits/${branch}/install/update11-12.sh
+wget https://raw.githubusercontent.com/tdrimmelen/digits/${branch}/install/install4.sh
 
 chmod u+x *sh
 
 ./install1.sh
 ./install2.sh
 ./install3.sh ${basemodule} ${branch}
-./update11-12.sh ${module}
+./install4.sh ${module}
 
 echo "Finished install. Reboot Pi now (type reboot followed by enter)"
 echo "Installed with parameters ${basemodule} ${module} ${branch}"
