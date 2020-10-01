@@ -7,10 +7,10 @@ cd /home/digits/digits
 echo Starting update.
 
 # Save local edits
-sudo su - ${app} -c "git stash"
+sudo su - ${app} -c "cd ${app} ; git stash"
 
 # Update from repository
-sudo su - ${app} -c "git pull"
+sudo su - ${app} -c "cd ${app} ; git pull"
 
 # Run update script
 source install/update.sh
