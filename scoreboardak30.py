@@ -47,11 +47,11 @@ class Scoreboardak30:
 
             try:
 
+                # if 14th char is a space, the clock is less than a minute and seconds are shown on the minutes position
                 if self.nominutetranslation or input[14] != " ":
                     self.minutes = int(input[20] + input[21])
                     self.seconds = int(input[15] + input[14])
                 else:
-                    # In case clock less than 1 minute, seconds are shown on position 20 and 21 (and tenth of seconds on pos  15)
                     self.minutes = 0
                     self.seconds = int(input[20] + input[21])
 
