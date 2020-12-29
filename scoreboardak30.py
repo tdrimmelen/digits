@@ -1,5 +1,6 @@
 import json 
 import serial
+#from testutils import serial
 import ConfigParser 
 import threading
 import logging
