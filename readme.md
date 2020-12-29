@@ -1,6 +1,10 @@
 # Release notes
 
-This is release 2.9
+This is release 2.10
+
+2020-12-29 Added functionality for AK30 scoreboards to show the seconds in the last minute correctly
+
+## Release 2.9
 
 2020-09-01 Fixed and improved update functionality
            
