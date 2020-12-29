@@ -51,7 +51,7 @@ class Scoreboardak30:
                     self.minutes = int(input[20] + input[21])
                     self.seconds = int(input[15] + input[14])
                 else:
-                    # In case clock < 1 minute, seconds are shown on position 20 and 21 (and tenth of seconds on pos  15)
+                    # In case clock less than 1 minute, seconds are shown on position 20 and 21 (and tenth of seconds on pos  15)
                     self.minutes = 0
                     self.seconds = int(input[20] + input[21])
 
