@@ -873,7 +873,7 @@ class Serial:
 
     def flushInput(self):
 
-        return null
+        return 
 
     def readline(self): 
 
