@@ -43,11 +43,11 @@ class Scoreboardak30:
                 self.guest = int(input[13] + input[12] + input[11])
                 self.period = int(input[7])
                 self.status = True
-            except ValueError as e:
+            except (ValueError, IndexError) as e:
                 self.status = False
                 self.errorDetail = str(e)
                 self.errorMessage = 'Error while parsing score/time'
-                logging.error(self.__class__.__name__ + ': ValueError while reading input')
+                logging.error(self.__class__.__name__ + ': ValueError or IndexError while reading input')
 
             
     def getJSONTime(self):
