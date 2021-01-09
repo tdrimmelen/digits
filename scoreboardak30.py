@@ -1,5 +1,6 @@
 import json 
 import serial
+#from testutils import serial
 import ConfigParser 
 import threading
 import logging
@@ -13,8 +14,16 @@ class Scoreboardak30:
         port = config.get(self.__class__.__name__, 'port')
         baudrate = config.getint(self.__class__.__name__, 'baudrate')
 
+        try:
+            self.nominutetranslation = config.getboolean(self.__class__.__name__, 'nominutetranslation')
+        except ConfigParser.NoOptionError:
+            self.nominutetranslation = False
+            logging.warning(self.__class__.__name__ + ': nominutetranslation option not found. Defaulting to False')
+
         logging.debug(self.__class__.__name__ + ': Init with port: ' + port)
         logging.debug(self.__class__.__name__ + ': Init with baudrate: ' + str(baudrate))
+        logging.debug(self.__class__.__name__ + ': nominutetranslation set to ' + str(self.nominutetranslation))
+
         self.ser = serial.Serial(port=port, baudrate=baudrate)
 
         self.home = 0
@@ -37,8 +46,15 @@ class Scoreboardak30:
             logging.debug('Value read from serial port: ' + input)
 
             try:
-                self.minutes = int(input[20] + input[21])
-                self.seconds = int(input[15] + input[14])
+
+                # if 14th char is a space, the clock is less than a minute and seconds are shown on the minutes position
+                if self.nominutetranslation or input[14] != " ":
+                    self.minutes = int(input[20] + input[21])
+                    self.seconds = int(input[15] + input[14])
+                else:
+                    self.minutes = 0
+                    self.seconds = int(input[20] + input[21])
+
                 self.home = int(input[17] + input[18] + input[19])
                 self.guest = int(input[13] + input[12] + input[11])
                 self.period = int(input[7])
