@@ -1,6 +1,10 @@
 # Release notes
 
-This is release 2.10
+This is release 2.10.1
+
+2020-01-09 Fixed issue that a too short string could crash the reading thread (scoreboardak30)
+
+## Release 2.10
 
 2020-12-29 Added functionality for AK30 scoreboards to show the seconds in the last minute correctly
 
